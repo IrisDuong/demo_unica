@@ -1,0 +1,28 @@
+{
+  "name": "bai_co_ban_unica",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "manhnk",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "config": "^3.3.9",
+    "cross-env": "^7.0.3",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "froala-editor": "^4.1.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^3.0.1",
+    "q": "^1.5.1",
+    "socket.io": "^4.7.2"
+  }
+}

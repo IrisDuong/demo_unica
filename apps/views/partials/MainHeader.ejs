@@ -1,0 +1,24 @@
+
+<link rel="stylesheet" href="/static/css/main.css">
+<body>
+       
+     <div id="top-main-header">
+         <div>
+         </div>
+         <div>
+            <div>
+               <div>
+                  <%
+                     if( typeof loggedUser == 'object' && loggedUser){
+                  %>
+                  <span><%=loggedUser.fullName %></span>
+                     <a href="/unica/auth/signout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+                  <%}else{%>
+                     <a href="/unica/auth/signin"><i class="fa-solid fa-power-off"></i>Login</a>
+                  <%}%>
+               </div>
+               <div>Mail</div>
+            </div>
+         </div>
+     </div>
+</body>

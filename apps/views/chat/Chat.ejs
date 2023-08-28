@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unica</title>
+
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"> <%- include("../partials/Menu") %></div>
+            <div class="col-sm-10">
+                <header>
+                    <%- include("../partials/MainHeader") -%>
+                </header>
+                <div class="main-content">
+                    <div class="page-breadcums">
+                        <%- include("../partials/Breadcrumb",{listBreadcrumbs:listBreadcrumbs}) -%>
+                    </div>
+                    <div class="btn-group">
+                        <div>
+                            <a class="btn-func btn-func-add"><i class="fa-solid fa-plus"></i><span>Add member to
+                                    Chatroom</span></a>
+                            <a class="btn-func btn-func-export"><i
+                                    class="fa-solid fa-file-export"></i><span>Exit</span></a>
+                        </div>
+                    </div>
+                    <section id="chat-room">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div>
+                                    <input type="text" class="form-control" name="chatUserName" id="chatUserName"
+                                        placeholder="Find user...">
+                                </div>
+                                <div>
+                                    <ul id="users-list">
+                                        <!-- <li>Trần Ngọc Châu Băng</li>
+                                        <li>Nguyễn Văn Mẫn</li>
+                                        <li>Nguyễn Thị Gái</li>
+                                        <li>Nguyễn Văn Minh</li>
+                                        <li>Lê Hoàng Luân</li>
+                                        <li>Phạm Hoàng Hải</li>
+                                        <li>Nguyễn Thị Mận</li>
+                                        <li>Nguyễn Minh Quân</li> -->
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <div id="conversation">
+                                    <div>
+                                        <p>Nguyễn Minh Quân</p>
+                                    </div>
+                                    <div id="message-list">
+                                        <div class="chat-friend">
+                                            <div class="user-avatar">
+                                                <span>
+                                                    M
+                                                </span>
+                                            </div>
+                                           <div class="messages">
+                                                <p>Guest 111111</p>
+                                                <p>Guest 111111</p>
+                                                <p>Guest 111111</p>
+                                                <p>Guest 111111</p>
+                                                <p>Guest 111111</p>
+                                           </div>
+                                        </div>
+                                        <div class="chat-current">
+                                           <div class="messages">
+                                                <p>Me 111111</p>
+                                                <p>Me 111111</p>
+                                                <p>Me 111111</p>
+                                                <p>Me 111111</p>
+                                                <p>Me 111111</p>
+                                                <p>Me 111111</p>
+                                           </div>
+                                           <div class="user-avatar">
+                                               <span>
+                                                   B
+                                               </span>
+                                           </div>
+                                        </div>
+                                    </div>
+                                    <div id="chat-content-box">
+                                        <input type="text" class="unica-form-control" name="message" id="message"
+                                            placeholder="Typing here...">
+                                        <button id="btnSend"><i class="fa-solid fa-paper-plane"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/socket.io.js"></script>
+    <script type="text/javascript">
+      var socket = io.connect("http://localhost:3001");
+      socket.on("connect",()=>{
+        console.log("New user connected to chat room");
+        var userName = prompt("What's your name");
+        socket.emit("addUser",userName);
+      });
+      socket.on("update_message",(data)=>{
+        $("#chat-room #users-list").append("<li><b>"+data.sender+" : </b>"+data.message+"</li>")
+      })
+
+      $("#btnSend").click((e)=>{
+        sendMessage();
+      })
+
+      $("#message").keypress((e)=>{
+        if(e.keyCode == 13) sendMessage();
+      })
+      function sendMessage(){
+            var message = $("#message").val();
+            $("#message").val(''); //reset typing message
+
+            if(message.trim().length > 0){
+                socket.emit("send_message",message.trim());
+            }
+      }
+    </script>
+</body>
+
+</html>

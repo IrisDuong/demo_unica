@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unica</title>
+
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link href="../../../node_modules/froala-editor/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../../node_modules/froala-editor/js/froala_editor.pkgd.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"> <%- include("../partials/Menu") %></div>
+            <div class="col-sm-10">
+                <div  class="main-content">
+                    <header>
+                        <%- include("../partials/MainHeader") -%>
+                    </header>
+                    <div class="page-breadcums">
+                        <%- include("../partials/Breadcrumb",{listBreadcrumbs:listBreadcrumbs}) -%>
+                    </div>
+                    <div class="btn-group">
+                        <div>
+                            <!-- <button class="btn-func btn-func-add"><i class="fa-solid fa-plus"></i><span>Add User</span></button>
+                            <button class="btn-func btn-func-export"><i class="fa-solid fa-file-export"></i><span>Export</span></button>
+                            <button class="btn-func btn-func-print"><i class="fa-solid fa-print"></i><span>Print</span></button> -->
+                        </div>
+                    </div>
+                    <div class="page-tab">
+                        <div  class="title">
+                            <!-- <div><span>Post Registration</span></div>
+                            <div></div> -->
+                        </div>
+                    </div>
+                    <div>
+                        <form class="form-horizontal" role="form" method="post" action="../blog/newPost">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="email" class="col-md-3 control-label">Title  :</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="title"  value=<%= post.title %> >
+                                            <p class="form-error"><%= commonData.error.title %></p>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="col-md-3 control-label">Author  :</label>
+                                        <div class="col-md-9">
+                                            <input type="text" class="form-control" name="author"  value=<%= post.author %> >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="col-md-3 control-label">Post  :</label>
+                                        <div class="col-md-9">
+                                            <textarea cols="15" rows="15" id="content-editor" class="form-control" name="content"  value=<%= post.content %>></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                        <div class="col-md-4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        new FroalaEditor("textarea#content-editor");
+    </script>
+</body>
+</html>

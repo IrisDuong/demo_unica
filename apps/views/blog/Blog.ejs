@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unica</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"> <%- include("../partials/Menu") %></div>
+            <div class="col-sm-10">
+                <header>
+                    <%- include("../partials/MainHeader") -%>
+                </header>
+                <div  class="main-content">
+                    <div class="page-breadcums">
+                        <%- include("../partials/Breadcrumb",{listBreadcrumbs:listBreadcrumbs}) -%>
+                    </div>
+                    
+                    <div class="btn-group">
+                        <div>
+                            <a href="/unica/blog/newPost" class="btn-func btn-func-add"><i class="fa-solid fa-plus"></i><span>Add Post</span></a>
+                            <!-- <button class="btn-func btn-func-export"><i class="fa-solid fa-file-export"></i><span>Export</span></button>
+                            <button class="btn-func btn-func-print"><i class="fa-solid fa-print"></i><span>Print</span></button> -->
+                        </div>
+                    </div>
+                    <!-- <div class="page-tab">
+                        <div  class="title">
+                            <div><span>Blog Managemnt</span></div>
+                            <div></div>
+                        </div>
+                    </div> -->
+                    <div>
+                        <table class="table table-striped">
+                            <thead class="alert">
+                                <tr>
+                                    <th></th>
+                                    <th>No</th>
+                                    <th>Title</th>
+                                    <th>Created Date</th>
+                                    <th>Author</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% listPosts.forEach((post)=>{ %>
+                                    <tr>
+                                        <td><input type="checkbox" class="grid-row-checkbok" name="postRowChk" id="postRowChk"></input</td>
+                                        <td><%= post.id %></td>
+                                        <td><a href="#"><%= post.title %></a></td>
+                                        <td><%= post.created_date %></td>
+                                        <td><%= post.author %></td>
+                                        <td><a href="#"><span class="grid-icon grid-icon-edit"><i class="fa-solid fa-pen-to-square"></i></span></a></td>
+                                        <td><a href="#"><span class="grid-icon grid-icon-trash"><i class="fa-solid fa-trash-can"></i></i></span></a></td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

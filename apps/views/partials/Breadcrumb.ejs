@@ -1,0 +1,18 @@
+
+<!-- <link rel="stylesheet" href="/static/css/main_breadcums.css"> -->
+<body>          
+        <ul class="top-breadcrumb">
+            <li><a href="#">
+                <i class="fa-solid fa-house-chimney"></i> Home</a></li>
+            <%
+                if(listBreadcrumbs && listBreadcrumbs.length > 0){
+                    listBreadcrumbs.map(e=>{
+                        
+            %>
+                    <li><a href="#"><%=e%></a></li>
+            <% 
+                    })
+                }
+            %>
+        </ul>
+</body>

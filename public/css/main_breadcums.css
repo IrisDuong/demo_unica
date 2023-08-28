@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
+
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none !important;
+  background: none !important;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 16px;
+  font-weight: bold;
+}
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: #353535;
+  content: ">";
+  font-weight: bold;
+}
+ul.breadcrumb li a {
+  color: #353535;
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #01447e;
+  text-decoration: underline;
+}

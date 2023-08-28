@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unica</title> 
+
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".btn-func-add").on("click",function(){
+                location.assign("/unica/user/signup")
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"> <%- include("../partials/Menu") %></div>
+            <div class="col-sm-10">
+                <header>
+                    <%- include("../partials/MainHeader") -%>
+                </header>
+                <div  class="main-content">
+                    <div class="page-breadcums">
+                        <%- include("../partials/Breadcrumb",{listBreadcrumbs:listBreadcrumbs}) -%>
+                    </div>
+                    <div class="btn-group">
+                        <div>
+                            <a class="btn-func btn-func-add"><i class="fa-solid fa-plus"></i><span>Add User</span></a>
+                            <a class="btn-func btn-func-export"><i class="fa-solid fa-file-export"></i><span>Export</span></a>
+                            <a class="btn-func btn-func-print"><i class="fa-solid fa-print"></i><span>Print</span></a>
+                        </div>
+                    </div>
+                    <section>
+                        <table class="table table-striped">
+                            <thead class="alert">
+                            <tr>
+                                <th></th>
+                                <th>ID</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <% if(listUsers != null && listUsers.length > 0) {
+                                    listUsers.map(e=>{
+                                %>   
+                                    <tr>
+                                        <td><input type="checkbox" class="grid-row-checkbok" name="userRowChk" id="userRowChk"></input</td>
+                                        <td><%=e.id %></td>
+                                        <td><a href="#"><%=e.fullName %></a></td>
+                                        <td><%=e.email %></td>
+                                        <th><a href="#" data-tooltip="edit"><span class="grid-icon grid-icon-edit"><i class="fa-solid fa-pen-to-square"></i></span></a></th>
+                                        <th><a href="#"><span class="grid-icon grid-icon-trash"><i class="fa-solid fa-trash-can"></i></i></span></a></th>
+                                    </tr>
+                                <% 
+                                    })
+                                }
+                                %>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

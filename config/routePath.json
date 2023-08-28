@@ -1,0 +1,45 @@
+{
+    "route":{
+        "rootPath":"/unica",
+        "pathName":"Home",
+        "treeLevel":1,
+        "children":[
+            {
+                "path":"/userMngt",
+                "pathName":"User Management",
+                "treeLevel":2,
+                "children":[
+                    {
+                        "path":"/signup",
+                        "pathName":"Register New User",
+                        "treeLevel":3,
+                        "children":[]
+                    }
+                    ,{
+                        "path":"/listUsers",
+                        "pathName":"List Users",
+                        "treeLevel":3,
+                        "children":[]
+                    }   
+                    ,{
+                        "path":"/userDetail",
+                        "pathName":"User Detail",
+                        "treeLevel":3,
+                        "children":[]
+                    }
+                ]
+            },{
+                "path":"/authMngt",
+                "pathName":"",
+                "treeLevel":2,
+                "children":[
+                    {
+                    "path":"/signin",
+                    "pathName":"Login",
+                    "treeLevel":3,
+                    "children":[]
+                }]
+            }
+        ]
+    }
+}
